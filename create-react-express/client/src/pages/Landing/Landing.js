@@ -8,7 +8,7 @@ const picHeight = {
 }
 
 const Landing = () => (
-    <div className="card-group mt-5">
+    <div className="card-group mt-5 mb-5">
         <div className="card">
             <img className="card-img-top" src={bluesock} alt="sock here" style={picHeight}/>
           <div className="card-body">
