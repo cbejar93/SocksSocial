@@ -8,11 +8,11 @@ import Footer from "./components/Footer";
 const App = () => (
     <Router>
       <div>
-        <Nav />
+        <Nav className="mb-3" />
         <div className = "container">
           <Switch>
             <Route exact path="/" component={Landing} />
-            <Route exact path= "/singup" component={Signup} />
+            <Route exact path= "/signup" component={Signup} />
           </Switch>
         </div>
         <Footer />
