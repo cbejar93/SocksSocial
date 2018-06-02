@@ -4,3 +4,18 @@
 
     background-image: url("../../images/socks.png")
 }
+
+.navbar {
+    background: linear-gradient(to right, #1b830b , #2f9e1e);
+    color: white;
+
+}
+
+.a {
+    color: white;
+}
+
+.nav-item {
+    padding: 15px 0;
+    
+}
