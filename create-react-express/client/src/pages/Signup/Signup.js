@@ -27,13 +27,19 @@ class Signup extends Component {
         console.log("hello there");
         this.setState({[event.target.name]: [event.target.value]});
         console.log(this.state.fname, this.state.lname, this.state.email, this.state.username, this.state.password);
-        userCreate();
+        this.userCreate();
     }
 
     userCreate = () => {
         console.log("This is where the api goes!");
-        let body = {fname: this.state.fname, lname: this.state.lname, email: this.state.email, username: this.state.username, password: this.state.password }
-        API.createUser(body)
+        let first = this.state.fname;
+        let last = this.state.lname;
+        let email = this.state.email;
+        let userName = this.state.username;
+        let password = this.state.password;
+        let body = {fname: first, lname: last, email: email, username: userName, password: password }
+        console.log(body);
+        API.createUser(body);
     }
 
     render (){
