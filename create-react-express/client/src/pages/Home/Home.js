@@ -67,12 +67,16 @@ class Home extends Component {
         API.getPost().then (res=>{
             console.log(res.data)
             this.setState({socks: res.data});
-            let cloudPic = res.data[1].url;
+
+        for (var i = 0; i < res.data.length; i++){
+            // this.setState({socks: res.data[i]});
+            let cloudPic = res.data[i].url;
             console.log(cloudPic);
             API.getPicture(cloudPic).then(res=>{
                 console.log(res);
                 console.log("you made it past cloudinary API");
             })
+          }
         })
     }
 
@@ -94,12 +98,26 @@ class Home extends Component {
 
     }
 
+    deleteSocks = (id) => {
+        console.log(id)
+        //    event.preventDefault();
+        //     console.log(event.target.value);
+        //     let id = event.target.value;
+        //     this.sockdeleter(id)
+          
+    }
+
+    sockdeleter = (id) => {
+        API.deleteSock(id);
+    }
+
    
     render(){
         return (
 <div>
     <Socks
         socks={this.state.socks}
+        deleteSocks={this.deleteSocks}
     />
     <div className= "sidenav">
         <h5>Make a post</h5>

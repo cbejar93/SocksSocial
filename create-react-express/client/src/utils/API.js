@@ -17,5 +17,10 @@ export default {
 
     getPost: function(){
         return axios.get("api/post")
+    },
+
+    deleteSock: function (id){
+        return axios.delete("api/post/" +id);
+
     }
 }
