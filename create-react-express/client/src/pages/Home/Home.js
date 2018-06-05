@@ -4,6 +4,7 @@ import Dropzone from 'react-dropzone';
 import request from 'superagent';
 import "./Home.css";
 import API from "./../../utils/API";
+import Socks from "../../components/SocksCard";
 
 let CLOUDINARY_UPLOAD_PRESET = 'zalhcbr6';
 const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/dhazivqjc/image/upload';
@@ -65,6 +66,7 @@ class Home extends Component {
     postMaker = () => {
         API.getPost().then (res=>{
             console.log(res.data)
+            this.setState({socks: res.data});
             let cloudPic = res.data[1].url;
             console.log(cloudPic);
             API.getPicture(cloudPic).then(res=>{
@@ -95,6 +97,10 @@ class Home extends Component {
    
     render(){
         return (
+<div>
+    <Socks
+        socks={this.state.socks}
+    />
     <div className= "sidenav">
         <h5>Make a post</h5>
         <hr />
@@ -107,9 +113,10 @@ class Home extends Component {
             onDrop={this.onImageDrop.bind(this)}>
             <p>Drop an image or click to select a file to upload.</p>
         </Dropzone>
-        <button type="button" onClick={this.formSubmission} className="btn btn-success d-flex justify-content-center">Post</button>
+        <button type="button" onClick={this.formSubmission} className="btn btn-success d-flex justify-content-center mt-2">Post</button>
 
     </div>
+</div>
         )
     }
 }
