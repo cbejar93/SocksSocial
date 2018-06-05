@@ -6,6 +6,10 @@ const mongoose = require("mongoose");
 const app = express();
 const routes = require("./routes");
 
+// Models 
+// const User = require("./models/userSchema");
+// const Post = require("./models/postSchema");
+
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));

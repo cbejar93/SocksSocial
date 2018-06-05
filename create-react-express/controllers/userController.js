@@ -1,3 +1,5 @@
+// const mongoose = require("mongoose");
+// const User = mongoose.model("User");
 const db = require("../models");
 
 module.exports = {
