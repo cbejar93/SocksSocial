@@ -3,7 +3,7 @@ const Schema= mongoose.Schema;
 
 const postSchema = new Schema ({
     title: {type: String, required: true},
-    signature: {type: String, required: true},
+    url: {type: String, required: true},
     created: {type: String, required: true}   
 })
 

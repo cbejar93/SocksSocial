@@ -11,8 +11,8 @@ export default {
         return axios.post("api/post", body);
     },
 
-    getPicture: function(id){
-      return axios.get(`https://api.cloudinary.com/v1_1/dhazivqjc/image/${id}`);
+    getPicture: function(url){
+      return axios.get(url);
     },
 
     getPost: function(){

@@ -18,8 +18,12 @@ class Home extends Component {
             user: [],
             title: "",
             uploadedFileCloudinaryUrl: '',
-            signature: ''
+            url: ''
         }
+    }
+
+    componentDidMount (){
+        this.postMaker();
     }
 
     onImageDrop(files) {
@@ -45,9 +49,9 @@ class Home extends Component {
               uploadedFileCloudinaryUrl: response.body.secure_url
             });
             console.log(response.body);
-            let signature = response.body.signature;
-            this.setState({signature: signature});
-            console.log(this.state.signature);
+            let imageURL = response.body.url;
+            this.setState({url: imageURL});
+            console.log(this.state.url);
           }
         });
       }
@@ -56,6 +60,18 @@ class Home extends Component {
         console.log(event.target.value);
         console.log(event.target.name);
         this.setState({[event.target.name]: [event.target.value]});
+    }
+
+    postMaker = () => {
+        API.getPost().then (res=>{
+            console.log(res.data)
+            let cloudPic = res.data[1].url;
+            console.log(cloudPic);
+            API.getPicture(cloudPic).then(res=>{
+                console.log(res);
+                console.log("you made it past cloudinary API");
+            })
+        })
     }
 
     formSubmission = event => {
@@ -68,9 +84,9 @@ class Home extends Component {
 
     savePost = () => {
             let header = this.state.title;
-            let photo = this.state.signature;
+            let photo = this.state.url;
             let created = new Date();
-            let body = {title: header, signature:photo, created: created};
+            let body = {title: header, url:photo, created: created};
             console.log(body);
             API.createPost(body);
 
@@ -91,7 +107,7 @@ class Home extends Component {
             onDrop={this.onImageDrop.bind(this)}>
             <p>Drop an image or click to select a file to upload.</p>
         </Dropzone>
-        <button type="button" onClick={this.formSubmission} class="btn btn-success d-flex justify-content-center">Post</button>
+        <button type="button" onClick={this.formSubmission} className="btn btn-success d-flex justify-content-center">Post</button>
 
     </div>
         )
