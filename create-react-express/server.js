@@ -5,10 +5,15 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const app = express();
 const routes = require("./routes");
+const session = require('express-session');
+const passportSetup = require("./config/passport-setup");
+// const cors = require("cors")
 
+// app.use(cors())
 // Models 
 // const User = require("./models/userSchema");
 // const Post = require("./models/postSchema");
+
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
@@ -18,6 +23,20 @@ if (process.env.NODE_ENV === "production") {
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+app.use((req, res, next)=>{
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+  );
+  if(req.method === "OPTIONS"){
+      res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET');
+      return res.status(200).json({});
+  }
+  next();
+});
+app.use(routes);
+
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/socks");
 
 
@@ -26,8 +45,9 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/socks");
 // app.get("*", function(req, res) {
 //   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 // });
+// app.use(passport.initialize())
+// app.use(passport.session())
 
-app.use(routes);
 
 
 app.listen(PORT, function() {

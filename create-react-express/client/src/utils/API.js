@@ -22,5 +22,9 @@ export default {
     deleteSock: function (id){
         return axios.delete("api/post/" +id);
 
+    },
+
+    googleLogin: function () {
+        return axios.get("auth/google");
     }
 }

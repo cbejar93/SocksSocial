@@ -42,6 +42,12 @@ class Signup extends Component {
         API.createUser(body);
     }
 
+    googleGetter = () => {
+        API.googleLogin().then(res=> {
+            console.log(res);
+        })
+    }
+
     render (){
         return (
             <div>
@@ -50,6 +56,7 @@ class Signup extends Component {
                     formSubmission={this.formSubmission}
                 
                 />
+                <a className="google-btn  btn-success" href="http://localhost:3001/auth/google">Google+</a>
             </div>
         )
     }
