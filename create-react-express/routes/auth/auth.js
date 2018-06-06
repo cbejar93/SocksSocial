@@ -8,13 +8,13 @@ router.use("/login",(req,res)=> {
 
 router.use("/", passport.authenticate("google",{
     scope: ["profile"],
-}) 
+})
 );
 
 // callback route:
 
 router.use("/redirect", (req,res)=>{
-    res.send("You've reached the callback URI")
+    // res.sendFile(path.join(__dirname, "../client/public/index.html"));
 })
 
 
