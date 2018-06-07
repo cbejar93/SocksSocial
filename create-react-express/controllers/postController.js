@@ -9,7 +9,7 @@ module.exports = {
     },
     findAll: function(req,res) {
         db.Post
-            .find(req.query)
+            .find(req.query).populate("comments")
             .then(dbModal => res.json(dbModal))
             .catch(err => res.status(422).json(err));
     },

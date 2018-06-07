@@ -22,7 +22,7 @@ const Socks = (props) => (
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Submit Comment!</button>
+                        <button type="button" class="btn btn-primary" onClick={props.commentID}>Submit Comment!</button>
                     </div>
                 </div>
             </div>
@@ -37,12 +37,23 @@ const Socks = (props) => (
                             <div className="card-block px-2">
                                 <h1 className="card-title ml-2 mt-5">{sock.title}</h1>
                                 <button href= "/nowhere" onClick={() => props.deleteSocks(sock._id)} className=" ml-2 btn btn-success">Delete</button>
-                                <button className="btn btn-succss" value={sock._id} onClick={props.commentIDer} type="button" data-toggle="modal" data-target="#exampleModal">Comment</button>
+                                <button className="btn btn-success ml-2" value={sock._id} onClick={props.commentIDer} type="button" data-toggle="modal" data-target="#exampleModal">Comment</button>
                             </div>
                         </div>
                     </div>
-                    <div className="card-footer w-100 text-muted">
+                    <div className="card-footer w-100 text-muted accordion">
                     {sock.created}
+                        <button className="btn btn-link" type="button" data-toggle="collapse" data-target={"#collapse"+index} aria-expanded="true" aria-controls={"collapseOne"+index}>
+                            View Comments
+                        </button>
+                    <div id={"collapse"+index} className="collapse" aria-labelledby="headingOne" data-parent="accordion">
+                           {sock.comments.map((comment) =>(
+                            <div className="card-body">
+                                {comment.comment}
+                                <hr />
+                            </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
         ))}

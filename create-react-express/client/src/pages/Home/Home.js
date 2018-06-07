@@ -20,7 +20,8 @@ class Home extends Component {
             title: "",
             uploadedFileCloudinaryUrl: '',
             url: '',
-            postID: ""
+            postID: "",
+            comment: ""
         }
     }
 
@@ -72,9 +73,9 @@ class Home extends Component {
         for (var i = 0; i < res.data.length; i++){
             // this.setState({socks: res.data[i]});
             let cloudPic = res.data[i].url;
-            console.log(cloudPic);
+            // console.log(cloudPic);
             API.getPicture(cloudPic).then(res=>{
-                console.log(res);
+                // console.log(res);
                 console.log("you made it past cloudinary API");
             })
           }
@@ -101,10 +102,7 @@ class Home extends Component {
 
     deleteSocks = (id) => {
         console.log(id)
-        //    event.preventDefault();
-        //     console.log(event.target.value);
-        //     let id = event.target.value;
-        //     this.sockdeleter(id)
+        this.sockdeleter(id);
           
     }
 
@@ -112,9 +110,17 @@ class Home extends Component {
         API.deleteSock(id);
     }
 
-    commentIDer = (event) => {
+    commentID = () => {
+        let body = {comment: this.state.comment, post: this.state.postID};
+        let id = this.state.postID;
+        API.postComment(body, id);
+    }
+
+    PostIDer = (event) => {
         event.preventDefault();
         console.log(event.target.value, "this is the IDer");
+        this.setState({postID: event.target.value});
+        
     }
 
    
@@ -124,7 +130,9 @@ class Home extends Component {
     <Socks
         socks={this.state.socks}
         deleteSocks={this.deleteSocks}
-        commentIDer={this.commentIDer}
+        commentIDer={this.PostIDer}
+        handleChange={this.handleChange}
+        commentID={this.commentID}
     />
     <div className= "sidenav">
         <h5>Make a post</h5>

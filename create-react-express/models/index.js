@@ -4,6 +4,3 @@ module.exports = {
     Comment: require("./commentSchema")
 }
 
-
-// export {defualt} from "./models";
-// export {default} from "./userSchema";

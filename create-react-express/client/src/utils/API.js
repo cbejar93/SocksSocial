@@ -26,5 +26,9 @@ export default {
 
     googleLogin: function () {
         return axios.get("auth/google");
+    },
+
+    postComment: function(body, id){
+        return axios.post("api/comment/"+id , body)
     }
 }
