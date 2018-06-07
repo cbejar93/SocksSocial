@@ -19,7 +19,8 @@ class Home extends Component {
             user: [],
             title: "",
             uploadedFileCloudinaryUrl: '',
-            url: ''
+            url: '',
+            postID: ""
         }
     }
 
@@ -111,6 +112,11 @@ class Home extends Component {
         API.deleteSock(id);
     }
 
+    commentIDer = (event) => {
+        event.preventDefault();
+        console.log(event.target.value, "this is the IDer");
+    }
+
    
     render(){
         return (
@@ -118,6 +124,7 @@ class Home extends Component {
     <Socks
         socks={this.state.socks}
         deleteSocks={this.deleteSocks}
+        commentIDer={this.commentIDer}
     />
     <div className= "sidenav">
         <h5>Make a post</h5>

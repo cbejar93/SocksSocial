@@ -1,6 +1,7 @@
 module.exports = {
     User: require("./userSchema"),
-    Post: require("./postSchema")
+    Post: require("./postSchema"),
+    Comment: require("./commentSchema")
 }
 
 
