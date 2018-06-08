@@ -56,7 +56,7 @@ class Signup extends Component {
                     formSubmission={this.formSubmission}
                 
                 />
-                <a className="google-btn  btn-success" href="http://localhost:3001/auth/google">Google+</a>
+                <a className="google-btn  btn-success" href="http://localhost:3001/auth/google/will">Google+</a>
             </div>
         )
     }

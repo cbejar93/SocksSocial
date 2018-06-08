@@ -7,13 +7,8 @@ const app = express();
 const routes = require("./routes");
 const session = require('express-session');
 const passportSetup = require("./config/passport-setup");
+const passport = require("passport");
 // const cors = require("cors")
-
-// app.use(cors())
-// Models 
-// const User = require("./models/userSchema");
-// const Post = require("./models/postSchema");
-
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
@@ -35,10 +30,10 @@ app.use((req, res, next)=>{
   }
   next();
 });
+
 app.use(routes);
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/socks");
-
 
 // Send every request to the React app
 // Define any API routes before this runs

@@ -24,8 +24,8 @@ export default {
 
     },
 
-    googleLogin: function () {
-        return axios.get("auth/google");
+    googleResponse: function () {
+        return axios.get("auth/google/redirect");
     },
 
     postComment: function(body, id){

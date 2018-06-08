@@ -1,8 +1,9 @@
 const router = require("express").Router();
-const auth = require("./auth");
+const googleRoutes = require("./google");
 
-router.use("/google", auth);
-
-// router.use("/post", postRoutes);
+router.use("/google", googleRoutes);
+// =>{
+//     console.log("google route!!");
+// });
 
 module.exports = router;

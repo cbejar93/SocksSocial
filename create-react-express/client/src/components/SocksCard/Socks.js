@@ -49,8 +49,9 @@ const Socks = (props) => (
                     <div id={"collapse"+index} className="collapse" aria-labelledby="headingOne" data-parent="accordion">
                            {sock.comments.map((comment) =>(
                             <div className="card-body">
-                                {comment.comment}
                                 <hr />
+                                {comment.comment}
+                               
                             </div>
                             ))}
                         </div>

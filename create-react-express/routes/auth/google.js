@@ -6,7 +6,7 @@ router.use("/login",(req,res)=> {
 
 });
 
-router.use("/", passport.authenticate("google",{
+router.use("/will", passport.authenticate("google",{
     scope: ["profile"],
 })
 );
@@ -14,7 +14,8 @@ router.use("/", passport.authenticate("google",{
 // callback route:
 
 router.use("/redirect", (req,res)=>{
-    // res.sendFile(path.join(__dirname, "../client/public/index.html"));
+    console.log(res);
+    res.redirect('http://localhost:3000/home');
 })
 
 
