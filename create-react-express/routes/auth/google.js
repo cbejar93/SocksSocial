@@ -13,8 +13,8 @@ router.use("/will", passport.authenticate("google",{
 
 // callback route:
 
-router.use("/redirect", (req,res)=>{
-    console.log(res);
+router.use("/redirect", passport.authenticate("google"),(req,res)=>{
+    // console.log(res);
     res.redirect('http://localhost:3000/home');
 })
 

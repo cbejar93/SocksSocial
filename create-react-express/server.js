@@ -8,6 +8,8 @@ const routes = require("./routes");
 const session = require('express-session');
 const passportSetup = require("./config/passport-setup");
 const passport = require("passport");
+const keys = require("./config/keys");
+const cookieSession = require("cookie-session");
 // const cors = require("cors")
 
 // Serve up static assets (usually on heroku)
@@ -17,6 +19,15 @@ if (process.env.NODE_ENV === "production") {
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+app.use(cookieSession({
+  maxAge: 24*60*60*1000,
+  keys: [keys.session.cookieKey]
+}));
+
+// init passport 
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use((req, res, next)=>{
   res.header("Access-Control-Allow-Origin", "*");
