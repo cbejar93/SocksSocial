@@ -22,8 +22,7 @@ const Socks = (props) => (
                     </div>
                     </div>
                     <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" className="btn btn-primary" onClick={props.commentID}>Submit Comment!</button>
+                        <button type="button" className="btn btn-primary"  data-dismiss="modal" onClick={props.commentID}>Submit Comment!</button>
                     </div>
                 </div>
             </div>
@@ -43,19 +42,19 @@ const Socks = (props) => (
                         </div>
                     </div>
                     <div className="card-footer w-100 text-muted accordion">
-                    <div className="row">
-                        <div className="col-md">
+                    <div className="row align-items-center">
+                        <div className="col-md-3">
                             <p>{sock.created}</p>
                         </div>
-                        <div className="col-md">
-                            <div className="btn-link" type="button" data-toggle="collapse" data-target={"#collapse"+index} aria-expanded="true" aria-controls={"collapseOne"+index}>
+                        <div className="col-md-3">
+                            <p className="what" data-toggle="collapse" data-target={"#collapse"+index} aria-expanded="true" aria-controls={"collapseOne"+index}>
                                 View Comments
-                            </div>
+                            </p>
                         </div>
                     </div>
                     <div id={"collapse"+index} className="collapse" aria-labelledby="headingOne" data-parent="accordion">
                            {sock.comments.map((comment) =>(
-                            <div className="card-body">
+                            <div className="card-body align-items-center">
                                 <hr />
                                 <h3 className="mt-5 mb-1">{comment.comment}</h3>
                                

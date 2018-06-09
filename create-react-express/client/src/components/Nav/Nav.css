@@ -11,8 +11,14 @@
 
 }
 
-.a {
+a {
     color: white;
+}
+
+a:hover {
+    color: whitesmoke;
+    text-decoration: none;
+
 }
 
 .nav-item {

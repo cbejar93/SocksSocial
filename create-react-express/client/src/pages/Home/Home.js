@@ -5,6 +5,7 @@ import request from 'superagent';
 import "./Home.css";
 import API from "./../../utils/API";
 import Socks from "../../components/SocksCard";
+import Moment from "moment";
 
 let CLOUDINARY_UPLOAD_PRESET = 'zalhcbr6';
 const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/dhazivqjc/image/upload';
@@ -100,7 +101,7 @@ class Home extends Component {
     savePost = () => {
             let header = this.state.title;
             let photo = this.state.url;
-            let created = new Date();
+            let created = Moment().format("DD-MM-YYYY");
             let body = {title: header, url:photo, created: created};
             console.log(body);
             API.createPost(body);

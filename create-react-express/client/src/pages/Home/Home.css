@@ -22,10 +22,10 @@ h5 {
     text-align: center;
     font-size: 12px;
     font-weight: 200;
-    background-color: #1b830b;
+    background: linear-gradient(to right, #4eb43e , #2f9e1e);
     color: white;
     position: fixed;
-    top: 210px;
+    top: 250px;
     width: 300px;
     right: 0px;
     height: 60%;
