@@ -14,8 +14,10 @@ router.use("/will", passport.authenticate("google",{
 // callback route:
 
 router.use("/redirect", passport.authenticate("google"),(req,res)=>{
-    // console.log(res);
-    res.redirect('http://localhost:3000/home');
+    console.log(req.user); 
+    const id = req.locals._id; 
+    // res.redirect("/api/profile/")
+    res.redirect(`http://localhost:3000/home?user=${id}`);
 })
 
 

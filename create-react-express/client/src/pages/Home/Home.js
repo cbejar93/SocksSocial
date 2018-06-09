@@ -27,7 +27,14 @@ class Home extends Component {
 
     componentDidMount (){
         this.postMaker();
+        // this.redirectGoogle();
     }
+
+    // redirectGoogle= ()=> {
+    //         API.googleResponse().then(res=>{
+    //             console.log(res.data);
+    //         })
+    // }
 
     onImageDrop(files) {
         this.setState({
@@ -135,19 +142,26 @@ class Home extends Component {
         commentID={this.commentID}
     />
     <div className= "sidenav">
-        <h5>Make a post</h5>
-        <hr />
-        <div className="input-group input-group-sm mb-3">
-            <input type="text" name="title" placeholder="Title" onChange={this.handleChange} className="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"/>
+        <div className="row d-flex justify-content-center mt-3">
+            <h3>Make a Post</h3>
+            
+        </ div>
+        <div className="row">
+            <div className="input-group mb-3 mt-3">
+                <input type="text" name="title" placeholder="Title" onChange={this.handleChange} className="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"/>
+            </div>
         </div>
-        <Dropzone
-            multiple={false}
-            accept="image/*"
-            onDrop={this.onImageDrop.bind(this)}>
-            <p>Drop an image or click to select a file to upload.</p>
-        </Dropzone>
-        <button type="button" onClick={this.formSubmission} className="btn btn-success d-flex justify-content-center mt-2">Post</button>
-
+        <div className="row d-flex justify-content-center">
+            <Dropzone
+                multiple={false}
+                accept="image/*"
+                onDrop={this.onImageDrop.bind(this)}>
+                <p>Drop an image or click to select a file to upload.</p>
+            </Dropzone>
+        </div>
+        <div className="row d-flex justify-content-center mt-3">
+            <button type="button" onClick={this.formSubmission} className="btn btn-light d-flex justify-content-center mt-2">Post</button>
+        </div>
     </div>
 </div>
         )

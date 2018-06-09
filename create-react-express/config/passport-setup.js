@@ -4,7 +4,7 @@ const keys = require("./keys");
 const User = require("../models/userSchema");
 
 passport.serializeUser((user, done)=>{
-    done(null, User.id);
+    done(null, user.id);
 });
 
 passport.deserializeUser((id, done)=>{
@@ -19,12 +19,14 @@ passport.use(new GoogleStrategy({
     callbackURL: "auth/google/redirect",
     clientID: keys.google.clientID,
     clientSecret: keys.google.clientSecret,
-    proxy: true
+    proxy: true,
+    passReqToCallback: true
 
-}, (accessToken, refreshToken, profile, done) => {
+}, (req, accessToken, refreshToken, profile, done) => {
 //   check if user already exists in our db
 User.findOne({googleID: profile.id}).then((currentUser)=>{
         if(currentUser){
+            req.locals = currentUser._id; 
             // already have the user
             console.log("user is "+ currentUser);
             done(null, currentUser);
@@ -34,6 +36,7 @@ User.findOne({googleID: profile.id}).then((currentUser)=>{
                 username: profile.displayName,
                 googleID: profile.id
             }).save().then((newUser)=>{
+                req.locals = currentUser._id; 
                 console.log("new user created: "+ newUser);
                 done(null, newUser);
             })

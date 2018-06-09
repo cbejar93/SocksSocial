@@ -1,4 +1,5 @@
 import React from "react";
+import "./Socks.css";
 
 
 
@@ -35,22 +36,28 @@ const Socks = (props) => (
                         </div>
                         <div className="col">
                             <div className="card-block px-2">
-                                <h1 className="card-title ml-2 mt-5">{sock.title}</h1>
-                                <button href= "/nowhere" onClick={() => props.deleteSocks(sock._id)} className=" ml-2 btn btn-success">Delete</button>
-                                <button className="btn btn-success ml-2" value={sock._id} onClick={props.commentIDer} type="button" data-toggle="modal" data-target="#exampleModal">Comment</button>
+                                <h1 className="card-title ml-2 mt-3">{sock.title}</h1>
+                                <button href= "/nowhere" onClick={() => props.deleteSocks(sock._id)} className=" ml-2 btn">Delete</button>
+                                <button className="btn ml-2" value={sock._id} onClick={props.commentIDer} type="button" data-toggle="modal" data-target="#exampleModal">Comment</button>
                             </div>
                         </div>
                     </div>
                     <div className="card-footer w-100 text-muted accordion">
-                    {sock.created}
-                        <button className="btn btn-link" type="button" data-toggle="collapse" data-target={"#collapse"+index} aria-expanded="true" aria-controls={"collapseOne"+index}>
-                            View Comments
-                        </button>
+                    <div className="row">
+                        <div className="col-md">
+                            <p>{sock.created}</p>
+                        </div>
+                        <div className="col-md">
+                            <div className="btn-link" type="button" data-toggle="collapse" data-target={"#collapse"+index} aria-expanded="true" aria-controls={"collapseOne"+index}>
+                                View Comments
+                            </div>
+                        </div>
+                    </div>
                     <div id={"collapse"+index} className="collapse" aria-labelledby="headingOne" data-parent="accordion">
                            {sock.comments.map((comment) =>(
                             <div className="card-body">
                                 <hr />
-                                {comment.comment}
+                                <h3 className="mt-5 mb-1">{comment.comment}</h3>
                                
                             </div>
                             ))}

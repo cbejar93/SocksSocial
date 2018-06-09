@@ -19,12 +19,21 @@ h5 {
 .sidenav {
     overflow: hidden;
     font-family: verdana;
+    text-align: center;
     font-size: 12px;
     font-weight: 200;
-    /* background-color: #2e353d; */
+    background-color: #1b830b;
+    color: white;
     position: fixed;
     top: 210px;
     width: 300px;
     right: 0px;
     height: 60%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border: 1px solid grey;
+    border-radius: 5px;
+  }
+
+  .dropzone {
+      color: white;
   }
