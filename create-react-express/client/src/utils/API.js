@@ -37,10 +37,10 @@ export default {
     },
 
     postUp: function (id) {
-        return axios.post("api/post/upvote/"+id)
+        return axios.get("api/post/upvote/"+id)
     },
 
     postDown: function (id) {
-        return axios.post("api/post/downvote/"+id)
+        return axios.get("api/post/downvote/"+id)
     }
 }

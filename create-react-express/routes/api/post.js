@@ -7,6 +7,12 @@ router.route("/")
     
 router.route("/:id")
     .delete(postController.remove);
+
+router.route("/upvote/:id")
+    .get(postController.upVote)
     
+    
+router.route("/downvote/:id")
+    .get(postController.downVote);
 
 module.exports = router;

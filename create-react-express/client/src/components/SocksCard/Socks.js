@@ -43,20 +43,21 @@ const Socks = (props) => (
                     </div>
                     <div className="card-footer w-100 text-muted accordion">
                     <div className="row align-items-center">
-                        <div className="col-md-3">
+                        <div className="col-md">
                             <p>{sock.created}</p>
                         </div>
-                        <div className="col-md-3">
+                        <div className="col-md">
                             <p className="what" data-toggle="collapse" data-target={"#collapse"+index} aria-expanded="true" aria-controls={"collapseOne"+index}>
                                 View Comments
                             </p>
-                        <div className="col-md-3"  id={"vote-up-"+index}>
-                            <button type="submit" onClick={props.voteUp} value={sock._id}>Vote Up</button>
                         </div>
-                        <div className="col-md-3" id={"vote-down-"+index}>
-                            <button type="submit" onClick={props.voteDown} value={sock._id}>Vote Down</button>
+                        <div className="col-md"  id={"vote-up-"+index}>
+                            <button type="submit" className="btn btn-primary" onClick={props.voteUp} value={sock._id}>Vote Up</button>
                         </div>
+                        <div className="col-md">
+                        <button type="submit" className="btn btn-primary" onClick={props.voteDown} value={sock._id}>Vote Down</button>
                         </div>
+                        
                     </div>
                     <div id={"collapse"+index} className="collapse" aria-labelledby="headingOne" data-parent="accordion">
                            {sock.comments.map((comment) =>(
