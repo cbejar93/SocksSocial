@@ -50,6 +50,12 @@ const Socks = (props) => (
                             <p className="what" data-toggle="collapse" data-target={"#collapse"+index} aria-expanded="true" aria-controls={"collapseOne"+index}>
                                 View Comments
                             </p>
+                        <div className="col-md-3"  id={"vote-up-"+index}>
+                            <button type="submit" onClick={props.voteUp} value={sock._id}>Vote Up</button>
+                        </div>
+                        <div className="col-md-3" id={"vote-down-"+index}>
+                            <button type="submit" onClick={props.voteDown} value={sock._id}>Vote Down</button>
+                        </div>
                         </div>
                     </div>
                     <div id={"collapse"+index} className="collapse" aria-labelledby="headingOne" data-parent="accordion">

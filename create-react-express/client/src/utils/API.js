@@ -30,5 +30,17 @@ export default {
 
     postComment: function(body, id){
         return axios.post("api/comment/"+id , body)
+    },
+
+    googleLogOut: function () {
+        return axios.get("auth/google/logout")
+    },
+
+    postUp: function (id) {
+        return axios.post("api/post/upvote/"+id)
+    },
+
+    postDown: function (id) {
+        return axios.post("api/post/downvote/"+id)
     }
 }

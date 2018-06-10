@@ -22,7 +22,8 @@ router.use("/redirect", passport.authenticate("google"),(req,res)=>{
 
 
 router.use("/logout", (req,res)=> {
-    res.send("logging out");
+    console.log("hello there");
+    req.logout();
 })
 
 module.exports = router;

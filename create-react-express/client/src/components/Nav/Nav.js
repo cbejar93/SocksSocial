@@ -1,8 +1,24 @@
-import React from "react";
+import React, {Component} from "react";
 import "./Nav.css";
 import logo from "../../images/ss_logo_white.png";
+import API from "./../../utils/API";
 
-const Nav = () => (
+
+class Nav extends Component {
+    constructor (){
+        super();
+        this.state = {
+            
+        }
+    }
+
+    loggingOut = () => {
+        API.googleLogOut();
+        console.log("logging out clicked!");
+    }
+
+    render(){
+        return(
     <div>
         <div className="jumbotron jumbotron-fluid mb-0">
             <div className="container">
@@ -19,15 +35,15 @@ const Nav = () => (
         <a className="nav" href="/signup">Sign Up </a>
       </li>
       <li className="nav-item mr-3">
-        <div className="nav" href="login">Log In</div>
+        <a className="nav" onClick={this.loggingOut} href="/">Log Out</a>
       </li>
     </ul>
   </div>
             
         </nav>
     </div>
-
-
-) 
+        )
+    }
+} 
 
 export default Nav;

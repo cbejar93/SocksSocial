@@ -28,14 +28,23 @@ class Home extends Component {
 
     componentDidMount (){
         this.postMaker();
-        // this.redirectGoogle();
     }
 
-    // redirectGoogle= ()=> {
-    //         API.googleResponse().then(res=>{
-    //             console.log(res.data);
-    //         })
-    // }
+    voteUp = (event) => {
+        event.preventDefault();
+        let postID = event.target.value;
+        console.log(postID);
+        API.postUp(postID);
+
+    }
+
+    voteDown = (event) => {
+        event.preventDefault();
+        let postID = event.target.value;
+        console.log(postID);
+        API.postDown(postID);
+    }
+
 
     onImageDrop(files) {
         this.setState({
@@ -141,6 +150,8 @@ class Home extends Component {
         commentIDer={this.PostIDer}
         handleChange={this.handleChange}
         commentID={this.commentID}
+        voteUp={this.voteUp}
+        voteDown= {this.voteDown}
     />
     <div className= "sidenav">
         <div className="row d-flex justify-content-center mt-3">
