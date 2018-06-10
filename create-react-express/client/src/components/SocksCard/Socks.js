@@ -54,6 +54,9 @@ const Socks = (props) => (
                         <div className="col-md"  id={"vote-up-"+index}>
                             <button type="submit" className="btn btn-primary" onClick={props.voteUp} value={sock._id}>Vote Up</button>
                         </div>
+                        <div className= "col-md">
+                            <p>{sock.voteScore}</p>
+                        </div>
                         <div className="col-md">
                         <button type="submit" className="btn btn-primary" onClick={props.voteDown} value={sock._id}>Vote Down</button>
                         </div>

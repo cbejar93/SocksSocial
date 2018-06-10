@@ -30,6 +30,13 @@ class Home extends Component {
         this.postMaker();
     }
 
+    sockSorter = (x) => {
+        x.sort(function(a, b) {
+            // console.log(a.voteScore);
+            return  parseFloat(b.voteScore) - parseFloat(a.voteScore);
+        });
+    }
+
     voteUp = (event) => {
         event.preventDefault();
         let postID = event.target.value;
@@ -85,6 +92,8 @@ class Home extends Component {
     postMaker = () => {
         API.getPost().then (res=>{
             console.log(res.data)
+            this.sockSorter(res.data);
+            // console.log(sorted);
             this.setState({socks: res.data});
 
         for (var i = 0; i < res.data.length; i++){
