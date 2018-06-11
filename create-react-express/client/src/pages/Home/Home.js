@@ -41,6 +41,8 @@ class Home extends Component {
         let postID = event.target.value;
         console.log(postID);
         API.postUp(postID);
+        this.postMaker();
+        
 
     }
 
@@ -49,6 +51,8 @@ class Home extends Component {
         let postID = event.target.value;
         console.log(postID);
         API.postDown(postID);
+        this.postMaker();
+        
     }
 
 
@@ -131,16 +135,18 @@ class Home extends Component {
     }
 
     sockdeleter = (id) => {
-        API.deleteSock(id);
+        API.deleteSock(id).then(res=> {
+            this.postMaker();
+        });
     }
 
     commentID = () => {
         let body = {comment: this.state.comment, post: this.state.postID};
         let id = this.state.postID;
         document.getElementById("comment").value= ""
-        API.postComment(body, id).then(res=> {
-            this.postMaker();
-        });
+        API.postComment(body, id)
+        this.postMaker();
+        
     }
 
     PostIDer = (event) => {

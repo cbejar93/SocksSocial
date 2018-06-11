@@ -28,7 +28,7 @@ const Socks = (props) => (
             </div>
         </div>
             {props.socks.map((sock, index)=>(
-                <div className="card w-75 mt-5 mb-5">
+                <div key={sock._id} className="card w-75 mt-5 mb-5">
                     <div className="row no-gutters">
                         <div className="col-auto">
                             <img src={sock.url} className="img-fluid" alt={index} height="150px" width="200px" />
@@ -63,8 +63,8 @@ const Socks = (props) => (
                         
                     </div>
                     <div id={"collapse"+index} className="collapse" aria-labelledby="headingOne" data-parent="accordion">
-                           {sock.comments.map((comment) =>(
-                            <div className="card-body align-items-center">
+                           {sock.comments.map((comment, index) =>(
+                            <div className ="card-body align-items-center" key={comment._id}>
                                 <hr />
                                 <h3 className="mt-5 mb-1">{comment.comment}</h3>
                                
