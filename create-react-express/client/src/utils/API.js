@@ -42,5 +42,10 @@ export default {
 
     postDown: function (id) {
         return axios.get("api/post/downvote/"+id)
+    },
+
+    userInfo: function (id) {
+        return axios.get("api/user/"+id)
     }
+
 }

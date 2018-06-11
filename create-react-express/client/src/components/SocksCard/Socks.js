@@ -38,6 +38,7 @@ const Socks = (props) => (
                                 <h1 className="card-title ml-2 mt-3">{sock.title}</h1>
                                 <button href= "/nowhere" onClick={() => props.deleteSocks(sock._id)} className=" ml-2 btn">Delete</button>
                                 <button className="btn ml-2" value={sock._id} onClick={props.commentIDer} type="button" data-toggle="modal" data-target="#exampleModal">Comment</button>
+                                <h5 className="ml-2 mt-3">{sock.user}</h5>
                             </div>
                         </div>
                     </div>
@@ -66,7 +67,8 @@ const Socks = (props) => (
                            {sock.comments.length > 0 ?  sock.comments.map((comment, index) =>(
                             <div className ="card-body align-items-center" key={comment._id}>
                                 <hr />
-                                <h3 className="mt-5 mb-1">{comment.comment}</h3>
+                                <p>{comment.user}</p>
+                                <h3 className="mb-1">{comment.comment}</h3>
                                
                             </div>
                             

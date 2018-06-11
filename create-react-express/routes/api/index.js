@@ -12,4 +12,6 @@ router.use("/comment", commentRoutes);
 
 router.use("/profile", profileRoutes);
 
+router.use("/user", userRoutes);
+
 module.exports = router;

@@ -5,7 +5,7 @@ router.route("/")
     // .get(articlesController.findAll)
     .post(userController.create);
 
-// router.route("/:id")
-//     .delete(articlesController.remove);
+router.route("/:id")
+    .get(userController.findOne);
 
 module.exports = router;

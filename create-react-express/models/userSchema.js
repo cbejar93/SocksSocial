@@ -3,7 +3,9 @@ const Schema= mongoose.Schema;
 
 const userSchema = new Schema({
 	username: String,
-	googleID: String
+	googleID: String,
+	comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
+	posts: [{ type: Schema.Types.ObjectId, ref: 'Post' }]
 });
 
 

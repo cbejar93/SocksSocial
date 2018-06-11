@@ -30,10 +30,11 @@ class Home extends Component {
     }
 
     queryURL = () => {
-        console.log(this.props)
+        // console.log(this.props)
         let user = this.props.location.search;
-        var get = user.split("=");
-        console.log(get[1]);
+        var queryparams = user.split("=");
+        console.log(queryparams[1]);
+        this.getUser(queryparams[1]);
     }
 
     sockSorter = (x) => {
@@ -50,6 +51,14 @@ class Home extends Component {
         this.postMaker();
         
 
+    }
+
+    getUser = (id) => {
+        API.userInfo(id).then(res=>{
+            // console.log(res.data);
+            this.setState({user: res.data})
+            console.log(this.state.user);
+        })
     }
 
     voteDown = (event) => {
@@ -126,7 +135,7 @@ class Home extends Component {
             let header = this.state.title;
             let photo = this.state.url;
             let created = Moment().format("DD-MM-YYYY");
-            let body = {title: header, url:photo, created: created};
+            let body = {title: header, url:photo, created: created, user:this.state.user.username};
             console.log(body);
             API.createPost(body).then(res=> {
                 this.postMaker();
@@ -147,7 +156,7 @@ class Home extends Component {
     }
 
     commentID = () => {
-        let body = {comment: this.state.comment, post: this.state.postID};
+        let body = {comment: this.state.comment, user: this.state.user.username, post: this.state.postID};
         let id = this.state.postID;
         document.getElementById("comment").value= ""
         API.postComment(body, id)
