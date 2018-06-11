@@ -62,14 +62,21 @@ const Socks = (props) => (
                         </div>
                         
                     </div>
-                    <div id={"collapse"+index} className="collapse" aria-labelledby="headingOne" data-parent="accordion">
-                           {sock.comments.map((comment, index) =>(
+                    <div id={"collapse"+index}  className="collapse" aria-labelledby="headingOne" data-parent="accordion">
+                           {sock.comments.length > 0 ?  sock.comments.map((comment, index) =>(
                             <div className ="card-body align-items-center" key={comment._id}>
                                 <hr />
                                 <h3 className="mt-5 mb-1">{comment.comment}</h3>
                                
                             </div>
-                            ))}
+                            
+                            ))
+                        :   <div className ="card-body align-items-center">
+                                <hr />
+                                <h3 className="mt-5 mb-1">Leave a Comment!</h3>
+                       
+                            </div>
+                        }
                         </div>
                     </div>
                 </div>

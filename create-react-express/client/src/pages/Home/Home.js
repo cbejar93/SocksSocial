@@ -10,8 +10,6 @@ import Moment from "moment";
 let CLOUDINARY_UPLOAD_PRESET = 'zalhcbr6';
 const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/dhazivqjc/image/upload';
 
-
-
 class Home extends Component {
     constructor (){
         super();
@@ -28,6 +26,14 @@ class Home extends Component {
 
     componentDidMount (){
         this.postMaker();
+        this.queryURL();
+    }
+
+    queryURL = () => {
+        console.log(this.props)
+        let user = this.props.location.search;
+        var get = user.split("=");
+        console.log(get[1]);
     }
 
     sockSorter = (x) => {
