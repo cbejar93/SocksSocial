@@ -1,0 +1,27 @@
+
+
+.jumbotron {
+
+    background-image: url("../../images/socks.png")
+}
+
+.navbar {
+    background: linear-gradient(to right, #1b830b , #2f9e1e);
+    color: white;
+
+}
+
+a {
+    color: white;
+}
+
+a:hover {
+    color: whitesmoke;
+    text-decoration: none;
+
+}
+
+.nav-item {
+    padding: 15px 0;
+    
+}

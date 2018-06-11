@@ -52,13 +52,13 @@ const Socks = (props) => (
                                 View Comments
                             </p>
                         </div>
-                        <div className="col-md d-flex justify-content-end"  id={"vote-up-"+index}>
-                            <button type="submit" className="btn btn-primary ml-5" onClick={props.voteUp} value={sock._id}><span class="far fa-thumbs-up"></span></button>
+                        <div className="col-md"  id={"vote-up-"+index}>
+                            <button type="submit" className="btn btn-primary" onClick={props.voteUp} value={sock._id}><span class="far fa-thumbs-up"></span></button>
                         </div>
                         <div className= "col-md d-flex justify-content-center">
                             <h2>{sock.voteScore}</h2>
                         </div>
-                        <div className="col-md justify-content-end">
+                        <div className="col-md">
                         <button type="submit" className="btn btn-primary" onClick={props.voteDown} value={sock._id}><span class="far fa-thumbs-down"></span></button>
                         </div>
                         
