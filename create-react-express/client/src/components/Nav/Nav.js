@@ -3,7 +3,6 @@ import "./Nav.css";
 import logo from "../../images/ss_logo_white.png";
 import API from "./../../utils/API";
 
-
 class Nav extends Component {
     constructor (){
         super();

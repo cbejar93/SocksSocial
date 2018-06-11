@@ -32,7 +32,6 @@ class Home extends Component {
 
     sockSorter = (x) => {
         x.sort(function(a, b) {
-            // console.log(a.voteScore);
             return  parseFloat(b.voteScore) - parseFloat(a.voteScore);
         });
     }
@@ -93,15 +92,11 @@ class Home extends Component {
         API.getPost().then (res=>{
             console.log(res.data)
             this.sockSorter(res.data);
-            // console.log(sorted);
             this.setState({socks: res.data});
 
         for (var i = 0; i < res.data.length; i++){
-            // this.setState({socks: res.data[i]});
             let cloudPic = res.data[i].url;
-            // console.log(cloudPic);
             API.getPicture(cloudPic).then(res=>{
-                // console.log(res);
                 console.log("you made it past cloudinary API");
             })
           }
@@ -113,6 +108,7 @@ class Home extends Component {
         console.log("hello there");
         this.setState({[event.target.name]: [event.target.value]});
         console.log(this.state.title);
+        document.getElementById("title").value= ""
         this.savePost();
     }
 
@@ -122,7 +118,9 @@ class Home extends Component {
             let created = Moment().format("DD-MM-YYYY");
             let body = {title: header, url:photo, created: created};
             console.log(body);
-            API.createPost(body);
+            API.createPost(body).then(res=> {
+                this.postMaker();
+            });
 
     }
 
@@ -139,7 +137,10 @@ class Home extends Component {
     commentID = () => {
         let body = {comment: this.state.comment, post: this.state.postID};
         let id = this.state.postID;
-        API.postComment(body, id);
+        document.getElementById("comment").value= ""
+        API.postComment(body, id).then(res=> {
+            this.postMaker();
+        });
     }
 
     PostIDer = (event) => {
@@ -169,7 +170,7 @@ class Home extends Component {
         </ div>
         <div className="row">
             <div className="input-group mb-3 mt-3">
-                <input type="text" name="title" placeholder="Title" onChange={this.handleChange} className="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"/>
+                <input type="text" id="title" name="title" placeholder="Title" onChange={this.handleChange} className="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"/>
             </div>
         </div>
         <div className="row d-flex justify-content-center">

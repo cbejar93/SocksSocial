@@ -18,7 +18,7 @@ const Socks = (props) => (
                     </div>
                     <div className="modal-body">
                     <div className="input-group input-group-sm mb-3">
-                        <input type="text" name="comment" placeholder="Comment" onChange={props.handleChange} className="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"/>
+                        <input type="text" id="comment" name="comment" placeholder="Comment" onChange={props.handleChange} className="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"/>
                     </div>
                     </div>
                     <div className="modal-footer">
@@ -52,13 +52,13 @@ const Socks = (props) => (
                             </p>
                         </div>
                         <div className="col-md"  id={"vote-up-"+index}>
-                            <button type="submit" className="btn btn-primary" onClick={props.voteUp} value={sock._id}>Vote Up</button>
+                            <button type="submit" className="btn btn-primary" onClick={props.voteUp} value={sock._id}>Would Wear</button>
                         </div>
-                        <div className= "col-md">
-                            <p>{sock.voteScore}</p>
+                        <div className= "col-md d-flex justify-content-center">
+                            <h2>{sock.voteScore}</h2>
                         </div>
                         <div className="col-md">
-                        <button type="submit" className="btn btn-primary" onClick={props.voteDown} value={sock._id}>Vote Down</button>
+                        <button type="submit" className="btn btn-primary" onClick={props.voteDown} value={sock._id}>Would NOT Wear</button>
                         </div>
                         
                     </div>
