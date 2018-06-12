@@ -20,7 +20,7 @@ const Landing = () => (
         <div className="card">
             <img className="card-img-top" src={donut} alt="sock here 2" style={picHeight} />
           <div className="card-body">
-              <h5 className="card-title">Be Super Postive!</h5>
+              <h5 className="card-title">Be Super Positive!</h5>
               <p className="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
               <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
           </div>
