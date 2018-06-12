@@ -1,6 +1,7 @@
 import React, {Component} from "react";
-import Input from "../../components/Input";
 import API from "../../utils/API";
+import "./Signup.css";
+
 
 class Signup extends Component {
     constructor () {
@@ -50,14 +51,20 @@ class Signup extends Component {
 
     render (){
         return (
-            <div>
-                <Input
-                    handleChange={this.handleChange}
-                    formSubmission={this.formSubmission}
-                
-                />
-                <a className="google-btn  btn-success" href="http://localhost:3001/auth/google/will">Google+</a>
+        <div>
+            <div className="row mt-5 d-flex justify-content-center">
+                <div className="col d-flex justify-content-center">
+                    <h1>Sign in with Google!</h1>
+                    
+                </div>
             </div>
+            <div className="row d-flex mt-3 justify-content-center">
+                <div className="col d-flex justify-content-center">
+                    <a className=" btn btn-googleplus  btn-lg" href="http://localhost:3001/auth/google/will">Google+</a>
+                </div>
+            </div>
+        </div>
+
         )
     }
 }

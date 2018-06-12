@@ -43,11 +43,9 @@ class Home extends Component {
         });
     }
 
-    voteUp = (event) => {
-        event.preventDefault();
-        let postID = event.target.value;
-        console.log(postID);
-        API.postUp(postID);
+    voteUp = (id) => {
+        
+        API.postUp(id);
         this.postMaker();
         
 
@@ -61,11 +59,9 @@ class Home extends Component {
         })
     }
 
-    voteDown = (event) => {
-        event.preventDefault();
-        let postID = event.target.value;
-        console.log(postID);
-        API.postDown(postID);
+    voteDown = (id) => {
+        
+        API.postDown(id);
         this.postMaker();
         
     }
