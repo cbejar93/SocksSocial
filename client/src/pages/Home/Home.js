@@ -134,7 +134,7 @@ class Home extends Component {
     savePost = () => {
             let header = this.state.title;
             let photo = this.state.url;
-            let created = Moment().format("DD-MM-YYYY");
+            let created = Moment().format("MM-DD-YYYY");
             let body = {title: header, url:photo, created: created, user:this.state.user.username};
             console.log(body);
             API.createPost(body).then(res=> {
