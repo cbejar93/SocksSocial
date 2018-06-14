@@ -3,16 +3,9 @@ const GoogleStrategy = require("passport-google-oauth20");
 const keys = require("./keys");
 const User = require("../models/userSchema");
 
-passport.serializeUser((user, done)=>{
-    done(null, user.id);
-});
 
-passport.deserializeUser((id, done)=>{
-    User.findById(id).then((user)=>{
-        done(null, id);
-    });
-    
-});
+// This is for all teh Goole user verification shout-out to the net-ninja for his help
+
 
 passport.use(new GoogleStrategy({
     // options for strat
@@ -48,3 +41,14 @@ User.findOne({googleID: profile.id}).then((currentUser)=>{
 })
 
 )
+
+passport.serializeUser((user, done)=>{
+    done(null, user.id);
+});
+
+passport.deserializeUser((id, done)=>{
+    User.findById(id).then((user)=>{
+        done(null, id);
+    });
+    
+});

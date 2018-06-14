@@ -5,25 +5,11 @@ const router = require("express").Router();
 const authRoutes = require("./auth");
 const apiRoutes = require("./api");
 
-// API Routes
+// API Routes for all the data we send back and forth 
 router.use("/api", apiRoutes);
-
+// This one is just for the Googe ouath
 router.use("/auth", authRoutes);
-// =>{
-//   console.log("auth route!!");
-// }
 
-// );
-
-// app.get("auth/google/", passport.authenticate("google",{
-//   scope: ["profile"],
-// })
-// );
-
-// app.get("auth/google/redirect", (req,res)=>{
-//   console.log("this is the redirect route!");
-//   res.redirect('/');
-// })
 
 
 // If no API routes are hit, send the React app

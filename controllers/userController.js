@@ -1,7 +1,7 @@
 // const mongoose = require("mongoose");
 // const User = mongoose.model("User");
 const db = require("../models");
-
+// create a new user and find one user here
 module.exports = {
     create: function(req, res) {
         db.User

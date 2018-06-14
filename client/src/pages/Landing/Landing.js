@@ -7,7 +7,7 @@ import "./Landing.css";
 const picHeight = {
     height: '368px'
 }
-
+// This is the first page a user sees in the website 
 const Landing = () => (
     <div className="card-group mt-5 mb-5">
         <div className="card">

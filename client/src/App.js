@@ -5,7 +5,7 @@ import Nav from "./components/Nav";
 import Signup from "./pages/Signup";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
-
+// Here I have set up my React Router that guides us through the apllication 
 const App = () => (
     <Router>
       <div>

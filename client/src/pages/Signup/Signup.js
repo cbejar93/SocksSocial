@@ -16,7 +16,7 @@ class Signup extends Component {
         };
         this.handleChange = this.handleChange.bind(this);
     }
-
+// This was intended for local outath but never used
     handleChange = event => {
         console.log(event.target.value);
         console.log(event.target.name);
@@ -48,7 +48,7 @@ class Signup extends Component {
             console.log(res);
         })
     }
-
+// Here we can sign in with google!
     render (){
         return (
         <div>

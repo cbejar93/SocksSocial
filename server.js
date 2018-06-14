@@ -1,22 +1,26 @@
+// The most important require is express
 const express = require("express");
 const path = require("path");
 const PORT = process.env.PORT || 3001;
 const bodyParser = require("body-parser");
+// This is for the database 
 const mongoose = require("mongoose");
 const app = express();
+// This is for express to use the prebuilt routes 
 const routes = require("./routes");
+// All the ones below are for google oauth
 const session = require('express-session');
 const passportSetup = require("./config/passport-setup");
 const passport = require("passport");
 const keys = require("./config/keys");
 const cookieSession = require("cookie-session");
-// const cors = require("cors")
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
+// This grabs the body element of a response so the req.body
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -29,6 +33,8 @@ app.use(cookieSession({
 app.use(passport.initialize());
 app.use(passport.session());
 
+
+// This is to try and mitagate CORS issues. 
 app.use((req, res, next)=>{
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
@@ -41,9 +47,9 @@ app.use((req, res, next)=>{
   }
   next();
 });
-
+// This is telling express to use the routes we have already set up 
 app.use(routes);
-
+// This is connecting to our database 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/socks");
 
 // Send every request to the React app
@@ -55,7 +61,7 @@ app.get('*', (request, response) => {
 
 
 
-
+// Here we create a PORT to serve the webpage 
 app.listen(PORT, function() {
   console.log(`🌎 ==> Server now on port ${PORT}!`);
 });

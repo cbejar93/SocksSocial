@@ -24,8 +24,7 @@ module.exports = {
         db.Post
           .findById({ _id: req.params.id })
            
-            // console.log(dbModel),
-            // dbModel.voteScore = dbModal.voteScore+ 1
+            // Here we change the score of a post by adding one
             .then((dbModel)=>{ dbModel.voteScore = dbModel.voteScore +1
                 return dbModel.save()
             })
@@ -34,6 +33,7 @@ module.exports = {
     downVote: function(req,res){
         db.Post
         .findById({ _id: req.params.id })
+        // Do the same as above but subtract one
         .then((dbModel)=>{ dbModel.voteScore = dbModel.voteScore -1
             return dbModel.save()
         })

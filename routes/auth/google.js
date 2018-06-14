@@ -5,14 +5,14 @@ const passport = require("passport")
 router.use("/login",(req,res)=> {
 
 });
-
+// This routes us to google and tells it what information we want from a user 
 router.use("/will", passport.authenticate("google",{
     scope: ["profile"],
 })
 );
 
 // callback route:
-
+// the redirect route to go back to the react app
 router.use("/redirect", passport.authenticate("google"),(req,res)=>{
     console.log(req.user); 
     const id = req.locals._id; 
